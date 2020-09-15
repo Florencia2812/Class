@@ -15,12 +15,14 @@ namespace ClassRamirez.Controllers
         private DataContext db = new DataContext();
 
         // GET: Students
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.Students.ToList());
         }
 
         // GET: Students/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,6 +38,7 @@ namespace ClassRamirez.Controllers
         }
 
         // GET: Students/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -44,6 +47,7 @@ namespace ClassRamirez.Controllers
         // POST: Students/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "StudentID,LastName,FirstMidName,EnrollmentDate")] Student student)
@@ -59,6 +63,7 @@ namespace ClassRamirez.Controllers
         }
 
         // GET: Students/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -76,6 +81,7 @@ namespace ClassRamirez.Controllers
         // POST: Students/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "StudentID,LastName,FirstMidName,EnrollmentDate")] Student student)
@@ -90,6 +96,7 @@ namespace ClassRamirez.Controllers
         }
 
         // GET: Students/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -105,6 +112,7 @@ namespace ClassRamirez.Controllers
         }
 
         // POST: Students/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
